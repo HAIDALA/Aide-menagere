@@ -1,0 +1,73 @@
+<% layout('./layouts/layout.eta') %>
+
+<h1>Tâches ménagères!</h1>
+
+<h2>Les tâches que vous avez acceptées</h2>
+
+<% if (it.claimedChores && it.claimedChores.length > 0) { %>
+
+<ul>
+<% it.claimedChores.forEach(chore => { %>
+  <li>
+    <%= chore.title %> (<%= chore.chorecoins %> cc)
+    <form method="POST" action="/chores/<%= chore.id %>/complete">
+      <input type="submit" value="Completer"/>
+    </form>
+  </li>
+<% }); %>
+</ul>
+
+<% } else { %>
+
+<p>Aucun disponible.</p>
+
+<% } %>
+
+
+<h2>Liste des tâches ménagères disponible</h2>
+
+<% if (it.availableChores && it.availableChores.length > 0) { %>
+
+<ul>
+<% it.availableChores.forEach(chore => { %>
+  <li>
+    <%= chore.title %> (<%= chore.chorecoins %> €)<br>
+    <%= chore.description %>
+    <form method="POST" action="/chores/<%= chore.id %>/claim">
+      <input type="submit" value="Accepter"/>
+    </form>
+  </li>
+<% }); %>
+</ul>
+
+<% } else { %>
+
+<p>Aucun disponible.</p>
+
+<% } %>
+
+
+
+<h2>Ajouter une Tâches!</h2>
+
+<% if (it.validationErrors) { %>
+<ul>
+    <% Object.keys(it.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
+<form method="POST" action="/chores">
+tâche:<br/>
+<input type="text" name="title" value="<%= it.title ? it.title : "" %>"/><br/>
+Description:<br/>
+<textarea name="description"><%= it.description ? it.description : "" %></textarea><br/>
+prix:<br/>
+<input type="number" name="chorecoins" value="<%= it.chorecoins  %>" /><br/>
+Date d'échéance:<br/>
+<input type="date" name="due_date" value="<%= it.due_date ? it.due_date : "" %>" /><br/>
+<input type="submit" value="Ajouter"/>
+</form>

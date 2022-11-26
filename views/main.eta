@@ -1,0 +1,10 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Aide ménagère</h1>
+
+<p>Il s'agit d'une application où vous pouvez trouver une Aide ménagère . Toute personne utilisant l'application peut voir les tâches disponibles, completer les tâches et gagner de l'argent. </p>
+
+<p>Vous n'avez pas de compte :  <a href="/auth/register">Créez votre compte</a>. Vous avez déjà un compte : <a href="/auth/login">Connectez-vous</a>!</p>
+
+If you wish to see how such an application could be built, visit the free online <a href="https://wsd.cs.aalto.fi" target="_blank">Web Software Development Course</a> offered by <a href="https://www.aalto.fi/en" target="_blank">Aalto University</a>.</p>
+

@@ -1,0 +1,13 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Connexion</h1>
+
+<form method="POST" action="/auth/login">
+  Email:<br/>
+  <input type="email" name="email" /><br/>
+  Mot de passe:<br/>
+  <input type="password" name="password" /><br/>
+  <input type="submit" value="Connexion" />
+</form>
+
+<a href="/auth/register">Pas encore enregistré? Inscrivez-vous ici.</a>
